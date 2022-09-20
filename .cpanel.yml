@@ -1,5 +1,5 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/nuclwult/shahsawood/
-    - /bin/cp * $DEPLOYPATH
+# ---
+# deployment:
+#   tasks:
+#     - export DEPLOYPATH=/home/nuclwult/shahsawood/
+#     - /bin/cp * $DEPLOYPATH
