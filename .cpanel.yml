@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/nuclwult/public_html  /
+    - export DEPLOYPATH="/home/nuclwult/lastwave.xyz/growit/"
     - /bin/cp * $DEPLOYPATH
