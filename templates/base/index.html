@@ -1,21 +1,15 @@
 {% extends "base/layout.html" %}
 {% block body %}
-<div class="col-6">
-    <div class="card text-center">
+{% for user in users %}
+<div class="col-md-6">
+    <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h4 class="card-title">{{ user.get_username|upper|default:"Card title" }}</h4>
+            <div class="card-subtitle text-muted">{{ user.last_login }}</div>
+            <p class="card-text">{{ user.get_short_name|default:"N/A" }}</p>
+            <a href="#" class="btn btn-primary btn-sm">{{ user.email|default:"someone@example.com" }}</a>
         </div>
     </div>
 </div>
-<div class="col-6">
-    <div class="card text-center">
-        <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-</div>
+{% endfor %}
 {% endblock body %}

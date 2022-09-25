@@ -22,12 +22,18 @@ BASE_URL = "https://graph.facebook.com"
 # Create your views here
 def index(request):
     """displays the landing page of the application"""
-    context = {}
+    context = {
+        "title": "home",
+        "users": User.objects.all(),
+    }
     return render(request, "base/index.html", context)
 
 
 def login_view(request):
     """logs a user in"""
+    context = {
+        "title": "login",
+    }
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -36,7 +42,7 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("base:index"))
         messages.error(request, "Invalid credentials")
-    return render(request, "base/authenticate.html")
+    return render(request, "base/authenticate.html", context)
 
 
 def logout_view(request):
@@ -47,6 +53,9 @@ def logout_view(request):
 
 def register(request):
     """adds a user to db and logs the user in into current session"""
+    context = {
+        "title": "register",
+    }
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -60,7 +69,7 @@ def register(request):
         else:
             login(request, user)
             return HttpResponseRedirect(reverse("base:index"))
-    return render(request, "base/authenticate.html")
+    return render(request, "base/authenticate.html", context)
 
 
 def add_comment(request, post_id):
